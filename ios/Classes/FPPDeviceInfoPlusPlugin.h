@@ -4,5 +4,5 @@
 
 #import <Flutter/Flutter.h>
 
-@interface FLTDeviceInfoPlusPlugin : NSObject <FlutterPlugin>
+@interface FPPDeviceInfoPlusPlugin : NSObject <FlutterPlugin>
 @end
