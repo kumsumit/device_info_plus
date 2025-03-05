@@ -17,9 +17,11 @@ void main() {
       iosDeviceInfoMap = <String, dynamic>{
         'name': 'name',
         'model': 'model',
+        'modelName': 'modelName',
         'utsname': iosUtsnameMap,
         'systemName': 'systemName',
         'isPhysicalDevice': true,
+        'isiOSAppOnMac': true,
         'systemVersion': 'systemVersion',
         'localizedModel': 'localizedModel',
         'identifierForVendor': 'identifierForVendor',
@@ -31,7 +33,9 @@ void main() {
     test('fromMap should return $IosDeviceInfo with correct values', () {
       expect(iosDeviceInfo.name, 'name');
       expect(iosDeviceInfo.model, 'model');
+      expect(iosDeviceInfo.modelName, 'modelName');
       expect(iosDeviceInfo.isPhysicalDevice, isTrue);
+      expect(iosDeviceInfo.isiOSAppOnMac, isTrue);
       expect(iosDeviceInfo.systemName, 'systemName');
       expect(iosDeviceInfo.systemVersion, 'systemVersion');
       expect(iosDeviceInfo.localizedModel, 'localizedModel');
