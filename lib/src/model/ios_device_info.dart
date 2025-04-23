@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:device_info_plus_platform_interface/model/base_device_info.dart';
+import 'package:meta/meta.dart';
 
 /// Information derived from `UIDevice`.
 ///
@@ -19,6 +20,8 @@ class IosDeviceInfo extends BaseDeviceInfo {
     required this.localizedModel,
     this.identifierForVendor,
     required this.isPhysicalDevice,
+    required this.physicalRamSize,
+    required this.availableRamSize,
     required this.isiOSAppOnMac,
     required this.utsname,
   }) : super(data);
@@ -58,6 +61,12 @@ class IosDeviceInfo extends BaseDeviceInfo {
   /// `false` if the application is running in a simulator, `true` otherwise.
   final bool isPhysicalDevice;
 
+  /// Total physical RAM size of the device in megabytes
+  final int physicalRamSize;
+
+  /// Current unallocated RAM size of the device in megabytes
+  final int availableRamSize;
+
   /// that indicates whether the process is an iPhone or iPad app running on a Mac.
   /// https://developer.apple.com/documentation/foundation/nsprocessinfo/3608556-iosapponmac
   final bool isiOSAppOnMac;
@@ -77,9 +86,64 @@ class IosDeviceInfo extends BaseDeviceInfo {
       localizedModel: map['localizedModel'],
       identifierForVendor: map['identifierForVendor'],
       isPhysicalDevice: map['isPhysicalDevice'],
+      physicalRamSize: map['physicalRamSize'],
+      availableRamSize: map['availableRamSize'],
       isiOSAppOnMac: map['isiOSAppOnMac'],
       utsname:
           IosUtsname._fromMap(map['utsname']?.cast<String, dynamic>() ?? {}),
+    );
+  }
+
+  /// Initializes the application metadata with mock values for testing.
+  @visibleForTesting
+  static IosDeviceInfo setMockInitialValues({
+    required String name,
+    required String systemName,
+    required String systemVersion,
+    required String model,
+    required String modelName,
+    required String localizedModel,
+    String? identifierForVendor,
+    required bool isPhysicalDevice,
+    required bool isiOSAppOnMac,
+    required int physicalRamSize,
+    required int availableRamSize,
+    required IosUtsname utsname,
+  }) {
+    final Map<String, dynamic> data = {
+      'name': name,
+      'systemName': systemName,
+      'systemVersion': systemVersion,
+      'model': model,
+      'modelName': modelName,
+      'localizedModel': localizedModel,
+      'identifierForVendor': identifierForVendor,
+      'isPhysicalDevice': isPhysicalDevice,
+      'isiOSAppOnMac': isiOSAppOnMac,
+      'physicalRamSize': physicalRamSize,
+      'availableRamSize': availableRamSize,
+      'utsname': {
+        'sysname': utsname.sysname,
+        'nodename': utsname.nodename,
+        'release': utsname.release,
+        'version': utsname.version,
+        'machine': utsname.machine,
+      },
+    };
+    return IosDeviceInfo._(
+      data: data,
+      name: name,
+      systemName: systemName,
+      systemVersion: systemVersion,
+      model: model,
+      modelName: modelName,
+      localizedModel: localizedModel,
+      identifierForVendor: identifierForVendor,
+      isPhysicalDevice: isPhysicalDevice,
+      isiOSAppOnMac: isiOSAppOnMac,
+      physicalRamSize: physicalRamSize,
+      availableRamSize: availableRamSize,
+      utsname: utsname,
     );
   }
 }
@@ -118,6 +182,24 @@ class IosUtsname {
       release: map['release'],
       version: map['version'],
       machine: map['machine'],
+    );
+  }
+
+  /// Initializes the application metadata with mock values for testing.
+  @visibleForTesting
+  static IosUtsname setMockInitialValues({
+    required String sysname,
+    required String nodename,
+    required String release,
+    required String version,
+    required String machine,
+  }) {
+    return IosUtsname._(
+      sysname: sysname,
+      nodename: nodename,
+      release: release,
+      version: version,
+      machine: machine,
     );
   }
 }
