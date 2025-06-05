@@ -7,7 +7,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="${applicationName}"
-        android:label="example"
+        android:label="chumble_test"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
