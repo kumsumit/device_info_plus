@@ -39,17 +39,17 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   meta: ^1.16.0
-  web: ^1.1.0
-  win32: ^5.11.0
+  web: ^1.1.1
+  win32: ^5.14.0
   win32_registry: ^2.1.0
 
 dev_dependencies:
   flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
-  mockito: ^5.4.5
+  mockito: ^5.4.6
   test: ^1.25.15
 
 environment:
-  sdk: ">=3.4.0 <4.0.0"
-  flutter: ">=3.22.0"
+  sdk: ">=3.8.1 <4.0.0"
+  flutter: ">=3.32.0"

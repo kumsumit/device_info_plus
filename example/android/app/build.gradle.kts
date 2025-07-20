@@ -7,14 +7,14 @@ plugins {
 android {
     compileSdk = 36
     namespace = "io.flutter.plugins.deviceinfoexample.example"
-    ndkVersion = "29.0.13113456"
+    ndkVersion = "29.0.13599879"
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_24
+        targetCompatibility = JavaVersion.VERSION_24
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_21.toString()
+        jvmTarget = JavaVersion.VERSION_24.toString()
     }
 
     defaultConfig {

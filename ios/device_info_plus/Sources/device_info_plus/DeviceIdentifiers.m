@@ -95,6 +95,8 @@
     return @"iPhone 16 Pro";
   } else if ([identifier isEqualToString:@"iPhone17,2"]) {
     return @"iPhone 16 Pro Max";
+  } else if ([identifier isEqualToString:@"iPhone17,5"]) {
+    return @"iPhone 16e";
     // iPads
   } else if ([identifier isEqualToString:@"iPad4,1"] ||
              [identifier isEqualToString:@"iPad4,2"] ||

@@ -2,14 +2,14 @@ group 'dev.fluttercommunity.plus.device_info'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '2.1.21'
+    ext.kotlin_version = '2.2.0'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.10.1'
+        classpath 'com.android.tools.build:gradle:8.11.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -30,12 +30,12 @@ android {
     namespace 'dev.fluttercommunity.plus.device_info'
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_21
-        targetCompatibility JavaVersion.VERSION_21
+        sourceCompatibility JavaVersion.VERSION_24
+        targetCompatibility JavaVersion.VERSION_24
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_21
+        jvmTarget = JavaVersion.VERSION_24
     }
 
     defaultConfig {
