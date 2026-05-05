@@ -58,10 +58,10 @@ internal class MethodCallHandlerImpl(
             build["type"] = Build.TYPE
             build["isPhysicalDevice"] = !isEmulator
             build["systemFeatures"] = getSystemFeatures()
+
             val statFs = StatFs(Environment.getDataDirectory().getPath())
             build["freeDiskSize"] = statFs.getFreeBytes()
             build["totalDiskSize"] = statFs.getTotalBytes()
-
 
             val version: MutableMap<String, Any> = HashMap()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -80,18 +80,6 @@ internal class MethodCallHandlerImpl(
             build["isLowRamDevice"] = memoryInfo.lowMemory
             build["physicalRamSize"] = memoryInfo.totalMem / 1048576L // Mb
             build["availableRamSize"] = memoryInfo.availMem / 1048576L // Mb
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                build["serialNumber"] = try {
-                    Build.getSerial()
-                } catch (ex: SecurityException) {
-                    Build.UNKNOWN
-                }
-            } else {
-                @Suppress("DEPRECATION")
-                build["serialNumber"] = Build.SERIAL
-            }
-
             result.success(build)
         } else {
             result.notImplemented()

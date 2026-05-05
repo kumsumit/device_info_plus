@@ -1,3 +1,59 @@
+## 13.1.0
+
+ - **FEAT**(device_info_plus): Lower requirements to Dart 3.10 and Flutter 3.38.1 ([#3803](https://github.com/fluttercommunity/plus_plugins/issues/3803)). ([6d73e0d1](https://github.com/fluttercommunity/plus_plugins/commit/6d73e0d1035dd2c6b7fa6691dce4fca31c2a14f6))
+
+## 13.0.0
+
+> Note: This release has breaking changes.
+>
+> Due to an update of win32 to 6.0.0, package requirements were also changed to match this update:
+> - Minimum Flutter version is 3.41.6
+> - Minimum Dart version is 3.11.0
+> - Min iOS is 13.0
+> - Min macOS is 10.15
+>
+> Since this release was already breaking, the rest of the dependencies were also updated to the latest possible versions.
+
+ - **BREAKING** **FEAT**(device_info_plus): Bump win32 from 5.15.0 to 6.0.0 ([#3791](https://github.com/fluttercommunity/plus_plugins/issues/3791)). ([5f93878b](https://github.com/fluttercommunity/plus_plugins/commit/5f93878bcc85b1dc5f90968119d87ef2cc6c8dce))
+
+## 12.4.0
+
+ - **FEAT**(device_info_plus): Add iOS device identifiers for 2026 models ([#3776](https://github.com/fluttercommunity/plus_plugins/issues/3776)). ([5dbe0a95](https://github.com/fluttercommunity/plus_plugins/commit/5dbe0a95ea3ce76acd6a57f8d33ae47761dd228c))
+ - **FEAT**(device_info_plus): Add support for isiOSAppOnVision property in iOS device info ([#3716](https://github.com/fluttercommunity/plus_plugins/issues/3716)). ([25bbcce7](https://github.com/fluttercommunity/plus_plugins/commit/25bbcce764f3d48a9d9f04a11153c52497873408))
+
+## 12.3.0
+
+ - **FEAT**(device_info_plus): Add identifiers for iPad Pro 11-Inch (M5) models ([#3708](https://github.com/fluttercommunity/plus_plugins/issues/3708)). ([61786a1d](https://github.com/fluttercommunity/plus_plugins/commit/61786a1d680d8c3886b4fceb34d689ec94e10d8a))
+
+## 12.2.0
+
+ - **FIX**(device_info_plus): correct Mac model name mappings ([#3690](https://github.com/fluttercommunity/plus_plugins/issues/3690)). ([5040a78e](https://github.com/fluttercommunity/plus_plugins/commit/5040a78e26e2abbc9b9e1e8cbb23b1e6e38ad32a))
+ - **FEAT**(device_info_plus): Add missing device identifiers for Macs on M4 ([#3700](https://github.com/fluttercommunity/plus_plugins/issues/3700)). ([b4dbd144](https://github.com/fluttercommunity/plus_plugins/commit/b4dbd1444c3104bc1f10af941907905d3070edcf))
+ - **FEAT**(device_info_plus): Add identifiers for new Apple devices on M5 chip ([#3698](https://github.com/fluttercommunity/plus_plugins/issues/3698)). ([4cc3f07f](https://github.com/fluttercommunity/plus_plugins/commit/4cc3f07fd4836e5417089630439fcb8a9cdb6bf5))
+
+## 12.1.0
+
+ - **FEAT**(device_info_plus): add mapping for new iPhone 17 series models ([#3676](https://github.com/fluttercommunity/plus_plugins/issues/3676)). ([80eb9815](https://github.com/fluttercommunity/plus_plugins/commit/80eb98156aed96fbc214736964724604e9c80b4f))
+
+## 12.0.0
+
+> Note: This release has breaking changes.
+>
+> Plugin now requires the following:
+> - Android Gradle Plugin >=8.12.1
+> - Gradle wrapper >=8.13
+> - Kotlin 2.2.0
+
+ - **DOCS**(all): replace MacOS by macOS in package READMEs ([#3658](https://github.com/fluttercommunity/plus_plugins/issues/3658)). ([72b6234c](https://github.com/fluttercommunity/plus_plugins/commit/72b6234c25315c30d8efc9f15a9258b0bb7273a8))
+ - **BREAKING** **REFACTOR**(device_info_plus): remove `serialNumber` property from AndroidDeviceInfo ([#3663](https://github.com/fluttercommunity/plus_plugins/issues/3663)). ([d0fdc582](https://github.com/fluttercommunity/plus_plugins/commit/d0fdc582e8187f71522678e19b6329221b5f535d))
+ - **BREAKING** **FEAT**(device_info_plus): Change Android compile SDK, update Android build config ([#3668](https://github.com/fluttercommunity/plus_plugins/issues/3668)). ([32528e7f](https://github.com/fluttercommunity/plus_plugins/commit/32528e7f852893dd4448c448096e459e1950c7e4))
+
+## 11.5.0
+
+ - **FIX**(device_info_plus): Specify correct Dart and Flutter version requirements ([#3597](https://github.com/fluttercommunity/plus_plugins/issues/3597)). ([6ebc0ead](https://github.com/fluttercommunity/plus_plugins/commit/6ebc0ead68df477f06c6d4738a69a9e56223cf47))
+ - **FEAT**(device_info_plus): Add identifier for iPhone 16e ([#3596](https://github.com/fluttercommunity/plus_plugins/issues/3596)). ([e1152bb8](https://github.com/fluttercommunity/plus_plugins/commit/e1152bb87d702ff86aaf29e9b7362d8dfd3247e0))
+ - **FEAT**(device_info_plus): Add storage information ([#3536](https://github.com/fluttercommunity/plus_plugins/issues/3536)). ([fefe6ce7](https://github.com/fluttercommunity/plus_plugins/commit/fefe6ce7a04c01c39f0cf0ecd0855bce1d701883))
+
 ## 11.4.0
 
  - **FEAT**(device_info_plus): add ram information ([#3535](https://github.com/fluttercommunity/plus_plugins/issues/3535)). ([160a0182](https://github.com/fluttercommunity/plus_plugins/commit/160a01824cb8a245aec52eb3f5a1fa804ef791eb))
@@ -16,7 +72,7 @@
 
 ## 11.3.1
 
-- Retracted release due to [#3496](https://sgithub.com/fluttercommunity/plus_plugins/issues/3496)
+- Retracted release due to [#3496](https://github.com/fluttercommunity/plus_plugins/issues/3496)
 
 ## 11.3.0
 

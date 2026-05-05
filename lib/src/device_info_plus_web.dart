@@ -10,38 +10,37 @@ import 'model/web_browser_info.dart';
 /// The web implementation of the BatteryPlusPlatform of the BatteryPlus plugin.
 class DeviceInfoPlusWebPlugin extends DeviceInfoPlatform {
   /// Constructs a DeviceInfoPlusPlugin.
-  DeviceInfoPlusWebPlugin(navigator) : _navigator = navigator;
+  DeviceInfoPlusWebPlugin(html.Navigator navigator) : _navigator = navigator;
 
   final html.Navigator _navigator;
 
   /// Factory method that initializes the DeviceInfoPlus plugin platform
   /// with an instance of the plugin for the web.
   static void registerWith(Registrar registrar) {
-    DeviceInfoPlatform.instance =
-        DeviceInfoPlusWebPlugin(html.window.navigator);
+    DeviceInfoPlatform.instance = DeviceInfoPlusWebPlugin(
+      html.window.navigator,
+    );
   }
 
   @override
   Future<BaseDeviceInfo> deviceInfo() {
     return Future<WebBrowserInfo>.value(
-      WebBrowserInfo.fromMap(
-        {
-          'appCodeName': _navigator.appCodeName,
-          'appName': _navigator.appName,
-          'appVersion': _navigator.appVersion,
-          'deviceMemory': _navigator.safeDeviceMemory,
-          'language': _navigator.language,
-          'languages': _navigator.languages.toDart,
-          'platform': _navigator.platform,
-          'product': _navigator.product,
-          'productSub': _navigator.productSub,
-          'userAgent': _navigator.userAgent,
-          'vendor': _navigator.vendor,
-          'vendorSub': _navigator.vendorSub,
-          'hardwareConcurrency': _navigator.hardwareConcurrency,
-          'maxTouchPoints': _navigator.maxTouchPoints,
-        },
-      ),
+      WebBrowserInfo.fromMap({
+        'appCodeName': _navigator.appCodeName,
+        'appName': _navigator.appName,
+        'appVersion': _navigator.appVersion,
+        'deviceMemory': _navigator.safeDeviceMemory,
+        'language': _navigator.language,
+        'languages': _navigator.languages.toDart,
+        'platform': _navigator.platform,
+        'product': _navigator.product,
+        'productSub': _navigator.productSub,
+        'userAgent': _navigator.userAgent,
+        'vendor': _navigator.vendor,
+        'vendorSub': _navigator.vendorSub,
+        'hardwareConcurrency': _navigator.hardwareConcurrency,
+        'maxTouchPoints': _navigator.maxTouchPoints,
+      }),
     );
   }
 }

@@ -8,8 +8,9 @@ part '../model/android_device_info_fake.dart';
 void main() {
   group('$AndroidDeviceInfo fromMap | toMap', () {
     test('fromMap should return $AndroidDeviceInfo with correct values', () {
-      final androidDeviceInfo =
-          AndroidDeviceInfo.fromMap(_fakeAndroidDeviceInfo);
+      final androidDeviceInfo = AndroidDeviceInfo.fromMap(
+        _fakeAndroidDeviceInfo,
+      );
 
       expect(androidDeviceInfo.id, 'id');
       expect(androidDeviceInfo.host, 'host');
@@ -25,7 +26,7 @@ void main() {
       expect(androidDeviceInfo.hardware, 'hardware');
       expect(androidDeviceInfo.bootloader, 'bootloader');
       expect(androidDeviceInfo.isPhysicalDevice, isTrue);
-       expect(androidDeviceInfo.freeDiskSize, 70729949184);
+      expect(androidDeviceInfo.freeDiskSize, 70729949184);
       expect(androidDeviceInfo.totalDiskSize, 113281839104);
       expect(androidDeviceInfo.fingerprint, 'fingerprint');
       expect(androidDeviceInfo.manufacturer, 'manufacturer');
@@ -40,15 +41,15 @@ void main() {
       expect(androidDeviceInfo.version.codename, 'codename');
       expect(androidDeviceInfo.version.incremental, 'incremental');
       expect(androidDeviceInfo.version.securityPatch, 'securityPatch');
-      expect(androidDeviceInfo.serialNumber, 'SERIAL');
       expect(androidDeviceInfo.isLowRamDevice, false);
       expect(androidDeviceInfo.physicalRamSize, 8192);
       expect(androidDeviceInfo.availableRamSize, 4096);
     });
 
     test('toMap should return map with correct key and map', () {
-      final androidDeviceInfo =
-          AndroidDeviceInfo.fromMap(_fakeAndroidDeviceInfo);
+      final androidDeviceInfo = AndroidDeviceInfo.fromMap(
+        _fakeAndroidDeviceInfo,
+      );
 
       expect(androidDeviceInfo.data, _fakeAndroidDeviceInfo);
     });

@@ -22,12 +22,13 @@ void main() {
         'systemName': 'systemName',
         'isPhysicalDevice': true,
         'isiOSAppOnMac': true,
+        'isiOSAppOnVision': true,
         'physicalRamSize': 8192,
         'availableRamSize': 4096,
         'systemVersion': 'systemVersion',
         'localizedModel': 'localizedModel',
         'identifierForVendor': 'identifierForVendor',
-         'freeDiskSize': 4096,
+        'freeDiskSize': 4096,
         'totalDiskSize': 8192,
       };
 
@@ -40,6 +41,7 @@ void main() {
       expect(iosDeviceInfo.modelName, 'modelName');
       expect(iosDeviceInfo.isPhysicalDevice, isTrue);
       expect(iosDeviceInfo.isiOSAppOnMac, isTrue);
+      expect(iosDeviceInfo.isiOSAppOnVision, isTrue);
       expect(iosDeviceInfo.physicalRamSize, 8192);
       expect(iosDeviceInfo.availableRamSize, 4096);
       expect(iosDeviceInfo.systemName, 'systemName');

@@ -13,11 +13,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  runZonedGuarded(() {
-    runApp(const MyApp());
-  }, (dynamic error, dynamic stack) {
-    developer.log("Something went wrong!", error: error, stackTrace: stack);
-  });
+  runZonedGuarded(
+    () {
+      runApp(const MyApp());
+    },
+    (dynamic error, dynamic stack) {
+      developer.log("Something went wrong!", error: error, stackTrace: stack);
+    },
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -45,24 +48,29 @@ class _MyAppState extends State<MyApp> {
         deviceData = _readWebBrowserInfo(await deviceInfoPlugin.webBrowserInfo);
       } else {
         deviceData = switch (defaultTargetPlatform) {
-          TargetPlatform.android =>
-            _readAndroidBuildData(await deviceInfoPlugin.androidInfo),
-          TargetPlatform.iOS =>
-            _readIosDeviceInfo(await deviceInfoPlugin.iosInfo),
-          TargetPlatform.linux =>
-            _readLinuxDeviceInfo(await deviceInfoPlugin.linuxInfo),
-          TargetPlatform.windows =>
-            _readWindowsDeviceInfo(await deviceInfoPlugin.windowsInfo),
-          TargetPlatform.macOS =>
-            _readMacOsDeviceInfo(await deviceInfoPlugin.macOsInfo),
+          TargetPlatform.android => _readAndroidBuildData(
+            await deviceInfoPlugin.androidInfo,
+          ),
+          TargetPlatform.iOS => _readIosDeviceInfo(
+            await deviceInfoPlugin.iosInfo,
+          ),
+          TargetPlatform.linux => _readLinuxDeviceInfo(
+            await deviceInfoPlugin.linuxInfo,
+          ),
+          TargetPlatform.windows => _readWindowsDeviceInfo(
+            await deviceInfoPlugin.windowsInfo,
+          ),
+          TargetPlatform.macOS => _readMacOsDeviceInfo(
+            await deviceInfoPlugin.macOsInfo,
+          ),
           TargetPlatform.fuchsia => <String, dynamic>{
-              'Error:': 'Fuchsia platform isn\'t supported'
-            },
+            'Error:': 'Fuchsia platform isn\'t supported',
+          },
         };
       }
     } on PlatformException {
       deviceData = <String, dynamic>{
-        'Error:': 'Failed to get platform version.'
+        'Error:': 'Failed to get platform version.',
       };
     }
 
@@ -104,7 +112,6 @@ class _MyAppState extends State<MyApp> {
       'freeDiskSize': build.freeDiskSize,
       'totalDiskSize': build.totalDiskSize,
       'systemFeatures': build.systemFeatures,
-      'serialNumber': build.serialNumber,
       'isLowRamDevice': build.isLowRamDevice,
       'physicalRamSize': build.physicalRamSize,
       'availableRamSize': build.availableRamSize,
@@ -122,6 +129,7 @@ class _MyAppState extends State<MyApp> {
       'identifierForVendor': data.identifierForVendor,
       'isPhysicalDevice': data.isPhysicalDevice,
       'isiOSAppOnMac': data.isiOSAppOnMac,
+      'isiOSAppOnVision': data.isiOSAppOnVision,
       'freeDiskSize': data.freeDiskSize,
       'totalDiskSize': data.totalDiskSize,
       'physicalRamSize': data.physicalRamSize,
@@ -227,38 +235,31 @@ class _MyAppState extends State<MyApp> {
         colorSchemeSeed: const Color(0x9f4376f8),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(_getAppBarTitle()),
-          elevation: 4,
-        ),
+        appBar: AppBar(title: Text(_getAppBarTitle()), elevation: 4),
         body: ListView(
-          children: _deviceData.keys.map(
-            (String property) {
-              return Row(
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(10),
+          children: _deviceData.keys.map((String property) {
+            return Row(
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    property,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Text(
-                      property,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      '${_deviceData[property]}',
+                      maxLines: 10,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Text(
-                        '${_deviceData[property]}',
-                        maxLines: 10,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ).toList(),
+                ),
+              ],
+            );
+          }).toList(),
         ),
       ),
     );

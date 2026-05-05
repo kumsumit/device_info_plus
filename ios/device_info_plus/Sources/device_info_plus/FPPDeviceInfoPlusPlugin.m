@@ -30,6 +30,10 @@
     if (@available(iOS 14.0, *)) {
       isiOSAppOnMac = [NSNumber numberWithBool:[info isiOSAppOnMac]];
     }
+    NSNumber *isiOSAppOnVision = [NSNumber numberWithBool:NO];
+    if (@available(iOS 26.1, *)) {
+      isiOSAppOnVision = [NSNumber numberWithBool:[info isiOSAppOnVision]];
+    }
     NSError *error = nil;
     NSDictionary *fsAttributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:&error];
     NSNumber *freeSize = [NSNumber numberWithInt:-1];
@@ -38,6 +42,7 @@
         freeSize = fsAttributes[NSFileSystemFreeSize];
         totalSize = fsAttributes[NSFileSystemSize];
     }
+
     NSString *machine;
     NSString *deviceName;
     if ([self isDevicePhysical]) {
@@ -60,9 +65,10 @@
       @"identifierForVendor" : [[device identifierForVendor] UUIDString]
           ?: [NSNull null],
       @"freeDiskSize" : freeSize,
-      @"totalDiskSize" : totalSize,    
+      @"totalDiskSize" : totalSize,
       @"isPhysicalDevice" : isPhysicalNumber,
       @"isiOSAppOnMac" : isiOSAppOnMac,
+      @"isiOSAppOnVision" : isiOSAppOnVision,
       @"physicalRamSize" : physicalRamSize,
       @"availableRamSize" : availableRamSize,
       @"utsname" : @{

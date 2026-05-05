@@ -50,8 +50,9 @@ class DeviceInfoPlugin {
   ///
   /// See: https://developer.android.com/reference/android/os/Build.html
   Future<AndroidDeviceInfo> get androidInfo async =>
-      _cachedAndroidDeviceInfo ??=
-          AndroidDeviceInfo.fromMap((await _platform.deviceInfo()).data);
+      _cachedAndroidDeviceInfo ??= AndroidDeviceInfo.fromMap(
+        (await _platform.deviceInfo()).data,
+      );
 
   /// This information does not change from call to call. Cache it.
   IosDeviceInfo? _cachedIosDeviceInfo;

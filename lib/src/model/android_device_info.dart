@@ -34,15 +34,14 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
     required this.freeDiskSize,
     required this.totalDiskSize,
     required List<String> systemFeatures,
-    required this.serialNumber,
     required this.isLowRamDevice,
     required this.physicalRamSize,
     required this.availableRamSize,
-  })  : supported32BitAbis = List<String>.unmodifiable(supported32BitAbis),
-        supported64BitAbis = List<String>.unmodifiable(supported64BitAbis),
-        supportedAbis = List<String>.unmodifiable(supportedAbis),
-        systemFeatures = List<String>.unmodifiable(systemFeatures),
-        super(data);
+  }) : supported32BitAbis = List<String>.unmodifiable(supported32BitAbis),
+       supported64BitAbis = List<String>.unmodifiable(supported64BitAbis),
+       supportedAbis = List<String>.unmodifiable(supportedAbis),
+       systemFeatures = List<String>.unmodifiable(systemFeatures),
+       super(data);
 
   /// Android operating system version values derived from `android.os.Build.VERSION`.
   final AndroidBuildVersion version;
@@ -125,7 +124,7 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
   /// `false` if the application is running in an emulator, `true` otherwise.
   final bool isPhysicalDevice;
 
-   /// Available disk size in bytes
+  /// Available disk size in bytes
   ///
   /// https://developer.android.com/reference/android/os/StatFs#getFreeBytes()
   final int freeDiskSize;
@@ -151,12 +150,6 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
   /// https://developer.android.com/reference/android/content/pm/PackageManager
   final List<String> systemFeatures;
 
-  /// Hardware serial number of the device, if available
-  ///
-  /// There are special restrictions on this identifier, more info here:
-  /// https://developer.android.com/reference/android/os/Build#getSerial()
-  final String serialNumber;
-
   /// `true` if the application is running on a low-RAM device, `false` otherwise.
   final bool isLowRamDevice;
 
@@ -175,7 +168,8 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
     return AndroidDeviceInfo._(
       data: map,
       version: AndroidBuildVersion._fromMap(
-          map['version']?.cast<String, dynamic>() ?? {}),
+        map['version']?.cast<String, dynamic>() ?? {},
+      ),
       board: map['board'],
       bootloader: map['bootloader'],
       brand: map['brand'],
@@ -198,7 +192,6 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
       freeDiskSize: map['freeDiskSize'],
       totalDiskSize: map['totalDiskSize'],
       systemFeatures: _fromList(map['systemFeatures'] ?? []),
-      serialNumber: map['serialNumber'],
       isLowRamDevice: map['isLowRamDevice'],
       physicalRamSize: map['physicalRamSize'],
       availableRamSize: map['availableRamSize'],
@@ -231,7 +224,6 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
     required int freeDiskSize,
     required int totalDiskSize,
     required List<String> systemFeatures,
-    required String serialNumber,
     required bool isLowRamDevice,
     required int physicalRamSize,
     required int availableRamSize,
@@ -268,7 +260,6 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
       'freeDiskSize': freeDiskSize,
       'totalDiskSize': totalDiskSize,
       'systemFeatures': systemFeatures,
-      'serialNumber': serialNumber,
       'isLowRamDevice': isLowRamDevice,
       'physicalRamSize': physicalRamSize,
       'availableRamSize': availableRamSize,
@@ -299,7 +290,6 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
       freeDiskSize: freeDiskSize,
       totalDiskSize: totalDiskSize,
       systemFeatures: _fromList(systemFeatures),
-      serialNumber: serialNumber,
       isLowRamDevice: isLowRamDevice,
       physicalRamSize: physicalRamSize,
       availableRamSize: availableRamSize,
