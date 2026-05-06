@@ -5,6 +5,7 @@ version: 13.1.0
 homepage: https://github.com/fluttercommunity/plus_plugins
 repository: https://github.com/fluttercommunity/plus_plugins/tree/main/packages/device_info_plus/device_info_plus
 issue_tracker: https://github.com/fluttercommunity/plus_plugins/labels/device_info_plus
+publish_to: none
 topics:
   - device
   - information
@@ -29,7 +30,8 @@ flutter:
         dartPluginClass: DeviceInfoPlusWindowsPlugin
 
 dependencies:
-  device_info_plus_platform_interface: ^8.1.0
+  device_info_plus_platform_interface:
+    git: https://github.com/kumsumit/device_info_plus_platform_interface.git
   ffi: ^2.2.0
   file: ^7.0.1
   flutter:
@@ -48,5 +50,5 @@ dev_dependencies:
   mockito: ^5.6.4
 
 environment:
-  sdk: ">=3.10.0 <4.0.0"
-  flutter: ">=3.38.1"
+  sdk: ">=3.11.0 <4.0.0"
+  flutter: ">=3.41.1"
