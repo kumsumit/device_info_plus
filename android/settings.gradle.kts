@@ -1,1 +1,1 @@
-rootProject.name = 'device_info'
+rootProject.name = "device_info"
