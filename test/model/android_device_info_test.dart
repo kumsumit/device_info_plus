@@ -13,6 +13,7 @@ void main() {
       );
 
       expect(androidDeviceInfo.id, 'id');
+      expect(androidDeviceInfo.androidId, 'androidId');
       expect(androidDeviceInfo.host, 'host');
       expect(androidDeviceInfo.tags, 'tags');
       expect(androidDeviceInfo.type, 'type');

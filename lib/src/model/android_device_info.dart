@@ -21,6 +21,7 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
     required this.hardware,
     required this.host,
     required this.id,
+    required this.androidId,
     required this.manufacturer,
     required this.model,
     required this.product,
@@ -81,6 +82,13 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
   /// Either a changelist number, or a label like "M4-rc20".
   /// https://developer.android.com/reference/android/os/Build#ID
   final String id;
+
+  /// The Android ID.
+  ///
+  /// This is an app-signing-key, user, and device scoped identifier. Empty if
+  /// it cannot be read.
+  /// https://developer.android.com/reference/android/provider/Settings.Secure#ANDROID_ID
+  final String androidId;
 
   /// The manufacturer of the product/hardware.
   /// https://developer.android.com/reference/android/os/Build#MANUFACTURER
@@ -179,6 +187,7 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
       hardware: map['hardware'],
       host: map['host'],
       id: map['id'],
+      androidId: map['androidId'] ?? '',
       manufacturer: map['manufacturer'],
       model: map['model'],
       product: map['product'],
@@ -211,6 +220,7 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
     required String hardware,
     required String host,
     required String id,
+    String androidId = '',
     required String manufacturer,
     required String model,
     required String product,
@@ -247,6 +257,7 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
       'hardware': hardware,
       'host': host,
       'id': id,
+      'androidId': androidId,
       'manufacturer': manufacturer,
       'model': model,
       'product': product,
@@ -277,6 +288,7 @@ class AndroidDeviceInfo extends BaseDeviceInfo {
       hardware: hardware,
       host: host,
       id: id,
+      androidId: androidId,
       manufacturer: manufacturer,
       model: model,
       product: product,

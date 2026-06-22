@@ -18,6 +18,7 @@ const _fakeSystemFeatures = ['FEATURE_AUDIO_PRO', 'FEATURE_AUDIO_OUTPUT'];
 const _fakeAndroidDeviceInfo = <String, dynamic>{
   'id': 'id',
   'host': 'host',
+  'androidId': 'androidId',
   'tags': 'tags',
   'type': 'type',
   'model': 'model',

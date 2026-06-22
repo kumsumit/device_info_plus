@@ -5,13 +5,13 @@ import android.content.ContentResolver
 import android.content.pm.FeatureInfo
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Environment
+import android.os.StatFs
 import android.provider.Settings
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import kotlin.collections.HashMap
-import android.os.StatFs
-import android.os.Environment
 
 /**
  * The implementation of [MethodChannel.MethodCallHandler] for the plugin. Responsible for
@@ -36,6 +36,7 @@ internal class MethodCallHandlerImpl(
             build["hardware"] = Build.HARDWARE
             build["host"] = Build.HOST
             build["id"] = Build.ID
+            build["androidId"] = getAndroidId()
             build["manufacturer"] = Build.MANUFACTURER
             build["model"] = Build.MODEL
             build["product"] = Build.PRODUCT
@@ -91,6 +92,14 @@ internal class MethodCallHandlerImpl(
         return featureInfos
             .filterNot { featureInfo -> featureInfo.name == null }
             .map { featureInfo -> featureInfo.name }
+    }
+
+    private fun getAndroidId(): String {
+        return try {
+            Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID) ?: ""
+        } catch (exception: Exception) {
+            ""
+        }
     }
 
     /**

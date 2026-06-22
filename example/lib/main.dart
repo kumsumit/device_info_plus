@@ -99,6 +99,7 @@ class _MyAppState extends State<MyApp> {
       'hardware': build.hardware,
       'host': build.host,
       'id': build.id,
+      'androidId': build.androidId,
       'manufacturer': build.manufacturer,
       'model': build.model,
       'product': build.product,

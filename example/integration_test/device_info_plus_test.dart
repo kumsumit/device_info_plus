@@ -98,6 +98,7 @@ void main() {
 
     expect(androidInfo.host, isNotNull);
     expect(androidInfo.id, isNotNull);
+    expect(androidInfo.androidId, isNotNull);
     expect(androidInfo.manufacturer, isNotNull);
     expect(androidInfo.model, isNotNull);
     expect(androidInfo.product, isNotNull);
